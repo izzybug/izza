@@ -1163,7 +1163,7 @@
                             padding-bottom: 56.25%;
                         }
                     </style>
-                    <div class="chakra-aspect-ratio css-r4n0xu"><iframe width="560" height="315" src="https://www.youtube.com/embed/MnmR6Sqh5NQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="chakra-aspect-ratio css-r4n0xu"><iframe id="youtube-player" width="560" height="315" src="https://www.youtube.com/embed/MnmR6Sqh5NQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
                 <hr aria-orientation="horizontal" class="chakra-divider css-svjswr" />
@@ -1272,23 +1272,32 @@
         <span></span>
     </div>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script id="__NEXT_DATA__" type="application/json">
-        {
-            "props": {
-                "pageProps": {}
-            },
-            "page": "/",
-            "query": {},
-            "buildId": "mH3skt0dY8M8nfUU9TcS4",
-            "nextExport": true,
-            "autoExport": true,
-            "isFallback": false,
-            "locale": "en",
-            "locales": ["en", "id"],
-            "defaultLocale": "en",
-            "scriptLoader": []
+    <script>
+        // Daftar URL video YouTube
+        var videoUrls = [
+          "https://www.youtube.com/embed/TQQJD7D6PIU",
+          "https://www.youtube.com/embed/9fvETktnaRw",
+          "https://www.youtube.com/embed/DKpaKHUlyBY",
+          // Tambahkan URL video lain sesuai kebutuhan
+        ];
+        
+        // Fungsi untuk mengubah URL video setiap hari
+        function changeVideo() {
+          var currentDate = new Date();
+          var currentDay = currentDate.getDate();
+          
+          // Mengambil URL video berdasarkan tanggal
+          var videoIndex = currentDay % videoUrls.length;
+          var videoUrl = videoUrls[videoIndex];
+          
+          // Mengubah URL video pada iframe
+          var youtubePlayer = document.getElementById("youtube-player");
+          youtubePlayer.src = videoUrl;
         }
-    </script>
+        
+        // Memanggil fungsi changeVideo saat halaman dimuat
+        document.addEventListener("DOMContentLoaded", changeVideo);
+      </script>
 </body>
 
 </html>
